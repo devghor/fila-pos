@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\NavigationGroup;
+use App\Enums\NavigationGroupEnum;
 
 return [
     /*
@@ -36,7 +36,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'nav.group' => NavigationGroup::Settings->value,
+    'nav.group' => NavigationGroupEnum::Settings->getLabel(),
     'nav.role.label' => 'Roles',
     'nav.role.icon' => 'heroicon-o-shield-check',
     'resource.label.role' => 'Role',
