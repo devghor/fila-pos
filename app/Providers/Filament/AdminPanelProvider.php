@@ -29,7 +29,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->topNavigation()
+            // ->topNavigation()
             ->simplePageMaxContentWidth(Width::Small)
             ->subNavigationPosition(SubNavigationPosition::Top)
             ->navigationGroups([
