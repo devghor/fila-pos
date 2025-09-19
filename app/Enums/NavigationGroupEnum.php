@@ -8,6 +8,7 @@ use Filament\Support\Contracts\HasLabel;
 enum NavigationGroupEnum implements HasLabel, HasIcon
 {
     case Dashboard;
+    case Pos;
     case Settings;
 
 
@@ -16,6 +17,7 @@ enum NavigationGroupEnum implements HasLabel, HasIcon
         return match($this) {
             self::Settings => 'Settings',
             self::Dashboard => 'Dashboard',
+            self::Pos => 'Point of Sale',
         };
     }
 
@@ -24,6 +26,7 @@ enum NavigationGroupEnum implements HasLabel, HasIcon
         return match($this) {
             self::Settings => 'heroicon-o-cog-6-tooth',
             self::Dashboard => 'heroicon-o-home',
+            self::Pos => 'heroicon-o-shopping-bag',
         };
     }
 }

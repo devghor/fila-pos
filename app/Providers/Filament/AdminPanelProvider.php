@@ -9,6 +9,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -29,19 +30,32 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->brandName('Fila Pos')
             // ->topNavigation()
+            // ->sidebarCollapsibleOnDesktop()
             ->simplePageMaxContentWidth(Width::Small)
             ->subNavigationPosition(SubNavigationPosition::Top)
             ->navigationGroups([
-                NavigationGroupEnum::Settings->getLabel(),
+                NavigationGroup::make()
+                    ->label(NavigationGroupEnum::Pos->getLabel())
+                    ->icon(NavigationGroupEnum::Pos->getIcon()),
+                NavigationGroup::make()
+                    ->label(NavigationGroupEnum::Settings->getLabel())
+                    ->icon(NavigationGroupEnum::Settings->getIcon()),
             ])
             ->spa()
             ->id('admin')
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Indigo,
+                'danger' => Color::Rose,
+                'gray' => Color::Gray,
+                'info' => Color::Blue,
+                'primary' => Color::Slate,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
             ])
+            ->font('Inter')
             ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\\Filament\\Clusters')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
