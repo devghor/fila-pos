@@ -5,6 +5,7 @@ namespace App\Models\Settings;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Enums\MediaCollection;
+use App\Enums\MediaCollectionEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -57,7 +58,7 @@ class User extends Authenticatable implements HasMedia
     public function registerMediaCollections(): void
     {
         $this
-            ->addMediaCollection(MediaCollection::UserProfilePicture->value)
+            ->addMediaCollection(MediaCollectionEnum::UserProfilePicture->value)
             ->singleFile();
     }
 }
