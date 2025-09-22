@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Settings\User;
+use Illuminate\Support\Facades\Artisan;
 
 class AdminSeeder extends Seeder
 {
