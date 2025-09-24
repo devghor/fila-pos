@@ -24,7 +24,10 @@ php artisan key:generate
 # Run migrations & seed database
 php artisan migrate --seed
 
-# Start development server
-php artisan serve
+# Shield
+php artisan shield:install admin
 
 php artisan shield:super-admin
+
+# Start development server
+php artisan serve
