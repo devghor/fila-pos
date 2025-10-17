@@ -6,6 +6,7 @@ namespace App\Models\Settings;
 
 use App\Enums\MediaCollection;
 use App\Enums\MediaCollectionEnum;
+use App\Traits\HasUlid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,6 +21,7 @@ class User extends Authenticatable implements HasMedia
     use Notifiable;
     use HasRoles;
     use InteractsWithMedia;
+    use HasUlid;
 
     /**
      * The attributes that are mass assignable.
