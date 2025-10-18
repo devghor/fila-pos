@@ -2,6 +2,7 @@
 
 namespace App\Models\Pos;
 
+use App\Models\Tenancy\Team;
 use App\Traits\HasUlid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,4 +18,9 @@ class Category extends Model
         'icon',
         'description',
     ];
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }

@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             MigrationHelper::addUlidColumn($table);
+            MigrationHelper::addTeamColumn($table);
             $table->string('name_en');
             $table->string('name_bn');
             $table->string('icon')->nullable();

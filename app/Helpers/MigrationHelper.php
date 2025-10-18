@@ -15,4 +15,9 @@ class MigrationHelper
         $table->foreignId('updated_by')->nullable();
         $table->foreignId('deleted_by')->nullable();
     }
+
+    public static function addTeamColumn($table)
+    {
+        $table->foreignId('team_id')->constrained('teams')->onDelete('cascade');
+    }
 }
