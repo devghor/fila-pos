@@ -3,7 +3,10 @@
 namespace App\Providers\Filament;
 
 use App\Enums\NavigationGroupEnum;
+use BezhanSalleh\FilamentShield\Middleware\SyncShieldTenant;
 use App\Filament\Pages\Dashboard;
+use App\Filament\Pages\Tenancy\RegisterTeam;
+use App\Models\Tenancy\Team;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -29,9 +32,11 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->tenant(Team::class, ownershipRelationship: 'team', slugAttribute: 'slug')
+            ->tenantRegistration(RegisterTeam::class)
             ->default()
             ->brandName('Fila Pos')
-            ->topNavigation()
+            // ->topNavigation()
             // ->sidebarCollapsibleOnDesktop()
             ->simplePageMaxContentWidth(Width::Small)
             ->subNavigationPosition(SubNavigationPosition::Top)
@@ -80,6 +85,11 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentShieldPlugin::make()
+                    ->navigationLabel('Roles & Permissions')
+                    ->navigationGroup(NavigationGroupEnum::Settings->getLabel())
+                    ->scopeToTenant(true)
+                    ->tenantRelationshipName('teams')
+                    ->tenantOwnershipRelationshipName('team')
                     ->gridColumns([
                         'default' => 1,
                         'sm' => 2,
@@ -96,6 +106,9 @@ class AdminPanelProvider extends PanelProvider
                         'sm' => 2,
                     ]),
             ])
+            ->tenantMiddleware([
+                SyncShieldTenant::class,
+            ], isPersistent: true)
             ->authMiddleware([
                 Authenticate::class,
             ]);

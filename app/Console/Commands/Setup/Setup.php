@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Console\Commands\Pos;
+namespace App\Console\Commands\Setup;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
-class PosInstall extends Command
+class Setup extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'pos:install';
+    protected $signature = 'setup';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install the POS module with fresh migrations and seeders';
+    protected $description = 'Set up the application by running migrations and installing admin panel';
 
     /**
      * Execute the console command.
@@ -27,7 +27,5 @@ class PosInstall extends Command
     public function handle()
     {
         Artisan::call('migrate:fresh --seed');
-        Artisan::call('shield:install admin');
-        Artisan::call('shield:super-admin --panel=admin');
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\Settings\Roles\Pages;
 
 use App\Filament\Resources\Settings\Roles\RoleResource;

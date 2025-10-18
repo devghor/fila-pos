@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Settings\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Settings\User;
+use App\Models\Tenancy\Team;
 use Illuminate\Support\Facades\Artisan;
 
 class AdminSeeder extends Seeder
@@ -14,7 +16,7 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        User::updateOrCreate(
+        $user = User::updateOrCreate(
             [
                 'email' => 'a@a.a',
             ],
@@ -25,5 +27,23 @@ class AdminSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
+
+        $team = Team::updateOrCreate(
+            [
+                'name' => 'Core Team',
+            ],
+            [
+                'slug' => 'core-team',
+            ]
+        );
+
+        $user->teams()->syncWithoutDetaching([$team->id]);
+
+        Artisan::call('shield:install admin');
+        Artisan::call('shield:super-admin --panel=admin');
+
+        Role::where('name', 'super_admin')->update([
+            'team_id' => $team->id,
+        ]);
     }
 }

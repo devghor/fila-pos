@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Policies;
+namespace App\Policies\Settings;
 
 use Illuminate\Foundation\Auth\User as AuthUser;
-use Spatie\Permission\Models\Role;
+use App\Models\Settings\Role;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class RolePolicy

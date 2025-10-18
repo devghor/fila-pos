@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Settings\Role;
+use Illuminate\Support\Facades\App;
+
 return [
 
     'models' => [
@@ -24,7 +27,7 @@ return [
          * `Spatie\Permission\Contracts\Role` contract.
          */
 
-        'role' => Spatie\Permission\Models\Role::class,
+        'role' => Role::class,
 
     ],
 
@@ -131,7 +134,7 @@ return [
      * (view the latest version of this package's migration file)
      */
 
-    'teams' => false,
+    'teams' => true,
 
     /*
      * The class to use to resolve the permissions team id
