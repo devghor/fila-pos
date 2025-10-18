@@ -31,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->brandName('Fila Pos')
-            // ->topNavigation()
+            ->topNavigation()
             // ->sidebarCollapsibleOnDesktop()
             ->simplePageMaxContentWidth(Width::Small)
             ->subNavigationPosition(SubNavigationPosition::Top)
@@ -45,7 +45,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->spa()
             ->id('admin')
-            ->path('admin')
+            ->path('/')
             ->login()
             ->colors([
                 'danger' => Color::Rose,

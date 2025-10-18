@@ -6,7 +6,7 @@ class MigrationHelper
 {
     public static function addUlidColumn($table, string $columnName = 'ulid')
     {
-        $table->ulid($columnName)->nullable()->unique();
+        $table->ulid($columnName)->unique();
     }
 
     public static function addUserTrackingColumns($table)

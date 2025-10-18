@@ -6,9 +6,9 @@ use Illuminate\Support\Str;
 
 trait HasUlid
 {
-    protected static function bootHasUlidKey()
+    protected static function bootHasUlid()
     {
-        static::saving(function ($model) {
+        static::creating(function ($model) {
             if (empty($model->ulid)) {
                 $model->ulid = (string) Str::ulid();
             }
